@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+  <title>BitAge · Software & Marketing Agency</title>
+  <!-- SEO essentials -->
+  <meta name="description" content="BitAge delivers web development, business solutions, design, social media handling & marketing. Based in i10 Islamabad, we build next‑gen software and brand experiences.">
+  <meta name="keywords" content="web development, business solutions, design, social media marketing, islamabad agency, BitAge">
+  <meta name="author" content="BitAge">
+  <link rel="canonical" href="https://bitage.agency">
+  <!-- modern font & icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="bitage_logo.jpg">
+  <style>
+    /* ---------- DARK THEME RESET ---------- */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: #0c0b10;   /* deep dark base */
+      color: #f0eef7;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+    /* modern dark palette with vibrant accents */
+    :root {
+      --bg-dark: #0c0b10;
+      --bg-card: #18161f;
+      --bg-soft: #211e2b;
+      --primary: #b78aff;      /* soft purple */
+      --primary-dark: #8f6ed9;
+      --secondary: #ffae3c;     /* warm orange */
+      --accent: #3dd68c;        /* fresh green */
+      --border-dim: #2e2a3a;
+      --text-light: #f0eef7;
+      --text-muted: #a6a0bb;
+      --glass-bg: rgba(24, 22, 31, 0.8);
+      --card-glow: 0 15px 35px -10px rgba(183, 138, 255, 0.2);
+    }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    section { padding: 5rem 0; position: relative; }
+    /* typography */
+    h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.02em; }
+    h1 { font-size: clamp(2.8rem, 10vw, 5.2rem); line-height: 1.1; }
+    h2 { font-size: clamp(2.2rem, 7vw, 3.8rem); margin-bottom: 2rem; }
+    h2 i, .gradient-text {
+      background: linear-gradient(130deg, #b78aff, #ffae3c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-style: normal;
+    }
+    .section-subhead {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin-bottom: 3rem;
+    }
+    /* buttons */
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.7rem;
+      padding: 0.85rem 2.2rem; border-radius: 40px;
+      font-weight: 600; text-decoration: none; transition: 0.2s;
+      border: none; cursor: pointer; background: transparent;
+      border: 1.5px solid var(--primary); color: var(--primary);
+    }
+    .btn-primary {
+      background: var(--primary); color: #0c0b10; border: none;
+      box-shadow: 0 0px 30px -4px var(--primary);
+    }
+    .btn-primary:hover { background: #c9a6ff; transform: translateY(-3px); }
+    .btn-outline:hover { background: var(--primary); color: #0c0b10; }
+    /* header glass */
+    .navbar {
+      position: sticky; top: 0; z-index: 999;
+      backdrop-filter: blur(16px) saturate(180%);
+      background: rgba(12, 11, 16, 0.8);
+      border-bottom: 1px solid #2e2a3a;
+      padding: 0.8rem 0;
+    }
+    .nav-container { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    .logo { font-size: 2rem; font-weight: 800; background: linear-gradient(130deg, #b78aff, #ffae3c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a { text-decoration: none; font-weight: 500; color: var(--text-light); transition: 0.2s; font-size: 1rem; }
+    .nav-links a:hover { color: var(--primary); }
+    .menu-toggle { display: none; font-size: 2rem; background: none; border: none; color: var(--primary); cursor: pointer; }
+    #home{margin-top: -3rem;}
+    /* mobile nav */
+    @media (max-width: 900px) {
+      .nav-links { 
+        display: none; width: 100%; flex-direction: column; align-items: flex-start; 
+        gap: 1.2rem; padding: 2rem 0 1.5rem; 
+      }
+      .nav-links.show { display: flex; }
+      .menu-toggle { display: block; }
+    }
+    /* cards & grids */
+    .service-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;
+    }
+    .service-card {
+      background: var(--bg-card); border: 1px solid var(--border-dim);
+      border-radius: 2.2rem; padding: 2.5rem 2rem;
+      transition: 0.25s ease; backdrop-filter: blur(4px);
+    }
+    .service-card:hover { border-color: var(--primary); transform: translateY(-8px); box-shadow: var(--card-glow); }
+    .service-icon { font-size: 3rem; margin-bottom: 1.8rem; color: var(--primary); }
+    .service-card h3 { font-size: 2rem; margin-bottom: 1rem; }
+    .badge {
+      background: var(--primary-dark); color: #0c0b10; font-size: 0.7rem; font-weight: 600;
+      padding: 0.2rem 1rem; border-radius: 30px; display: inline-block;
+    }
+    /* hero */
+    .hero-badge {
+      background: #2e2a3a; color: var(--primary); padding: 0.5rem 1.5rem; border-radius: 40px;
+      display: inline-block; margin-bottom: 2rem; border: 1px solid #413b52;
+    }
+    .hero p { font-size: 1.3rem; color: var(--text-muted); margin: 2rem 0; }
+    .hero-cta { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 2rem;}
+    .hero-visual {
+      background: radial-gradient(circle at 30% 50%, #342e44, #0c0b10);
+      border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+      width: 100%; height: 380px; display: flex; align-items: center; justify-content: center;
+      font-size: 5rem; color: var(--primary); border: 2px solid #413b52;
+      animation: morph 8s ease-in-out infinite;
+    }
+    @keyframes morph {
+      0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; } 
+      50% { border-radius: 60% 40% 30% 70% / 50% 30% 70% 50%; } 
+      100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+    }
+
+    /* hero mobile order: ensure crown column goes under text */
+    @media (max-width: 700px) {
+      .hero-grid {
+        width: 98%;
+      }
+      .hero-grid .hero-text{
+        width: 90%;
+      }
+      .hero-badge{display: none;}
+      /* .hero-grid > :first-child { order: 1; }
+      .hero-grid > :last-child { order: 2; margin-top: 2rem; } */
+      
+      .hero-visual {display: none;}
+    }
+
+    /* marquee / clients */
+    .marquee {
+      height: 7rem;
+      background: #18161f; border-radius: 80px; padding: 1.2rem 0; overflow: hidden;
+      border: 1px solid #2e2a3a; margin: 2rem 0; margin-bottom: -2rem;
+    }
+    .marquee-track { display: inline-flex; animation: scroll 20s linear infinite; }
+    .marquee-track span { font-size: 1.2rem; font-weight: 600; margin: 0 2.5rem; color: #7a72a0; }
+    @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* case studies / extra sections */
+    .page-section {
+      background: var(--bg-card); border-radius: 3rem; padding: 3rem;
+      border: 1px solid var(--border-dim); margin-top: 3rem;
+    }
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0; }
+    .stat-item { background: #211e2b; border-radius: 2rem; padding: 2rem; }
+    .stat-number { font-size: 3rem; font-weight: 700; color: var(--secondary); }
+
+    /* team / about */
+    .team-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;
+    }
+    .member { background: #211e2b; border-radius: 2.5rem; padding: 2rem; text-align: center; border: 1px solid #353040; }
+    .avatar { width: 120px; height: 120px; border-radius: 50%; background: #342e44; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: var(--primary); border: 2px solid var(--primary); }
+
+    /* contact block */
+    .contact-block {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; background: var(--bg-card);
+      border-radius: 3rem; padding: 3rem; border: 1px solid #353040;
+    }
+    .map-placeholder {
+      background: #211e2b; border-radius: 2rem; min-height: 260px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      border: 2px dashed #4a425c; color: var(--text-muted);
+    }
+    .map-placeholder iframe{
+      border-radius: 30px;
+      height: 96%;
+      width: 98%;
+    }
+
+    /* expanded footer */
+    .footer {
+      background: #07060a; border-top: 1px solid #2e2a3a; padding: 4rem 0 2rem;
+      margin-top: 5rem;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr repeat(4, 1fr); gap: 2.5rem;
+    }
+    .footer-col p { color: #948caa; margin: 1.5rem 0; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.8rem; }
+    .footer-col a { color: #bbb0d4; text-decoration: none; }
+    .footer-col a:hover { color: var(--primary); }
+    .social-links { display: flex; gap: 1.5rem; font-size: 1.8rem; margin-top: 2rem; }
+    .privpol{cursor: pointer;}
+    .footer-bottom { border-top: 1px solid #211e2b; margin-top: 3rem; padding-top: 2rem; text-align: center; color: #5f5780; }
+
+    /* mobile over‑responsiveness */
+    @media (max-width: 700px) {
+      .container { padding: 0 1.2rem; }
+      .contact-block, .stats-grid, .footer-grid { grid-template-columns: 1fr; }
+      .page-section { padding: 2rem 1.2rem; }
+      .footer-grid { gap: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-container">
+      <!-- <div class="logo">BitAge⏺</div> -->
+       <div class="logo">BitAge</div>
+      <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+      <div class="nav-links" id="navLinks">
+        <a href="#home">home</a>
+        <a href="#work">work</a>
+        <a href="#services">services</a>
+        <a href="#about">about</a>
+        <a href="#contact">contact</a>
+        <a href="#" class="btn btn-primary" id="whatsappBookBtn" style="padding:0.5rem 1.8rem;">book call <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section id="home" style="padding-bottom: 0;">
+      <div class="container">
+        <div class="hero-grid" style="display: flex; flex-direction: row;">
+          <div id="hero-text">
+            <span class="hero-badge"><i class="fas fa-location-dot"></i> i10 Islamabad · global outreach</span>
+            <h1>Software & <span class="gradient-text">marketing</span> for the now</h1>
+            <p>BitAge builds web, business solutions, design, social & marketing, all under one dark roof.</p>
+            <div class="hero-cta">
+              <a href="#" class="btn btn-primary" id="whatsappHeroBtn"><i class="fab fa-whatsapp"></i> book free call</a>
+              <a href="#work" class="btn btn-outline"><i class="fas fa-arrow-down"></i> case studies</a>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <i class="fas fa-crown"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="container">
+      <div class="marquee">
+        <div class="marquee-track">
+          <span>web dev</span><span>business solutions</span><span>design</span><span>social media</span><span>marketing</span><span>web dev</span><span>business solutions</span><span>design</span>
+        </div>
+        <div class="marquee-track">
+          <span>web dev</span><span>business solutions</span><span>design</span><span>social media</span><span>marketing</span>
+        </div>
+      </div>
+    </div>
+    <section id="services">
+      <div class="container">
+        <h2>four <i>core</i> powers</h2>
+        <div class="service-grid">
+          <div class="service-card"><div class="service-icon"><i class="fas fa-code"></i></div><h3>web dev</h3><p>react, vue, e‑commerce, full‑stack, JAMstack, we build fast, responsive, scalable.</p><span class="badge">frontend + backend</span></div>
+          <div class="service-card"><div class="service-icon"><i class="fas fa-briefcase"></i></div><h3>business solutions</h3><p>ERP, CRM, automation, inventory & custom dashboards tailored to your workflow.</p><span class="badge">optimize</span></div>
+          <!-- <div class="service-card"><div class="service-icon"><i class="fas fa-paint-brush"></i></div><h3>design</h3><p>UI/UX, brand identity, motion, and design systems that connect with gen z.</p><span class="badge">creative</span></div> -->
+          <div class="service-card"><div class="service-icon"><i class="fas fa-hashtag"></i></div><h3>social media handling</h3><p>content strategy, organic growth, reels, community management, we run your channels.</p><span class="badge">tiktok · ig · x</span></div>
+          <div class="service-card"><div class="service-icon"><i class="fas fa-chart-pie"></i></div><h3>marketing</h3><p>performance ads, seo, email funnels, influencer collabs, data‑driven results.</p><span class="badge">roi positive</span></div>
+        </div>
+      </div>
+    </section>
+    <section id="work" style="margin-top: -5rem;">
+      <div class="container">
+        <h2>featured <i>work</i></h2>
+        <div class="page-section">
+          <h3 style="font-size: 2.4rem;">Eila Foods – Custom E-Commerce Development</h3>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap:2rem; margin:2rem 0;">
+            <div><span class="stat-number">+240%</span> <p>increase in customer engagement</p></div>
+            <div><span class="stat-number">70%</span> <p>faster order processing time</p></div>
+          </div>
+          <p style="margin: 2rem 0 1rem;">A fully responsive and conversion-optimized online store built for Eila Foods. We blend gen‑z aesthetics with hard metrics.</p>
+          <!-- <a href="#" class="btn btn-outline">see case study <i class="fas fa-arrow-right"></i></a> -->
+        </div>
+        <!-- <div class="page-section" style="margin-top:2rem;">
+          <h3>fintech dashboard · business solution</h3>
+          <p>Custom analytics platform for a microfinance institution in Islamabad. 99.9% uptime, 43% efficiency gain.</p>
+          <div class="stats-grid" style="margin-top:1.5rem;">
+            <div class="stat-item"><span class="stat-number">+43%</span> efficiency</div>
+            <div class="stat-item"><span class="stat-number">2.5k</span> daily users</div>
+          </div>
+        </div> -->
+      </div>
+    </section>
+    <section id="about" style="margin-top: -5rem;">
+      <div class="container">
+        <h2>about <i>bitage</i></h2>
+        <div class="page-section">
+          <p style="font-size:1.3rem;">Founded in i10 Islamabad, we are a pack of developers, designers, and digital strategists. We speak gen‑z, but we deliver enterprise‑grade work.</p>
+          <div class="team-grid" style="margin:3rem 0">
+            <div class="member"><div class="avatar"><i class="fas fa-user-astronaut"></i></div><h4>Ahsan</h4><p>Tech lead</p></div>
+            <div class="member"><div class="avatar"><i class="fas fa-user-ninja"></i></div><h4>Zamin</h4><p>Marketing</p></div>
+            <div class="member"><div class="avatar"><i class="fas fa-user-secret"></i></div><h4>Hassan</h4><p>Creative dir</p></div>
+            <!-- <div class="member"><div class="avatar"><i class="fas fa-user-robot"></i></div><h4>aiman</h4><p>social media</p></div> -->
+          </div>
+          <p><i class="fas fa-map-pin"></i> i10, Islamabad, open fri-sun, 6pm‑9pm (or virtually always).</p>
+        </div>
+      </div>
+    </section>
+    <section id="contact" style="margin-top: -5rem;">
+      <div class="container">
+        <h2>hit our <i>dms</i></h2>
+        <div class="contact-block">
+          <div>
+            <h3>i10, Islamabad</h3>
+            <!-- <p style="margin:1rem 0">Plot 44, 3rd floor, civic center.<br>+92 51 234 5678 · hello@bitage.agency</p> -->
+                         <p style="margin:1rem 0"><br>+92 300 6605128 · help.bitage@gmail.com</p>
+            <div class="social-links">
+              <i class="fab fa-instagram"></i>
+              <i class="fab fa-tiktok"></i>
+              <i class="fab fa-x-twitter"></i>
+              <i class="fab fa-linkedin"></i>
+            </div>
+            <a href="#" class="btn btn-primary" id="whatsappContactBtn" style="margin-top:2rem; display:inline-flex;"><i class="fab fa-whatsapp"></i> chat on whatsapp</a>
+          </div>
+          <div class="map-placeholder">
+            <!-- <i class="fas fa-map-marked-alt fa-3x"></i>
+            <p style="margin-top:1rem;">📍 i10 markaz — interactive map</p> -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12922.127365427317!2d73.02795940516499!3d33.648091785671234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38df95a11266f221%3A0xea313c36158e222b!2sI-10%2C%20Islamabad%2C%20Pakistan!5e1!3m2!1sen!2s!4v1772042346513!5m2!1sen!2s" style="border:0;"    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section style="padding-top:0;">
+      <div class="container">
+        <div class="page-section" style="background: #211e2b;">
+          <h3 style="font-size:2.2rem;">how we work ⚡</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap:2rem; margin:2rem 0;">
+            <div><span class="stat-number">1.</span><p>discovery sprint</p></div>
+            <div><span class="stat-number">2.</span><p>prototype & validate</p></div>
+            <div><span class="stat-number">3.</span><p>build & iterate</p></div>
+            <div><span class="stat-number">4.</span><p>launch & scale</p></div>
+          </div>
+          <p>We combine design thinking with agile development, plus non‑stop marketing alignment.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="logo" style="-webkit-text-fill-color:white; color:white;">BitAge</div>
+          <p>Software & marketing agency, i10 Islamabad. We build, we market, we grow.</p>
+          <div class="social-links"><i class="fab fa-instagram" onclick="window.location.href='';"></i><i class="fab fa-tiktok" onclick="window.location.href='https://google.com/';"></i><i class="fab fa-x-twitter"></i></div>
+        </div>
+        <div class="footer-col"><h4>SERVICES</h4><ul><li>web dev</li><li>business solutions</li><li>design</li><li>social media handling</li><li>marketing</li></ul></div>
+        <!-- <div class="footer-col"><h4>company</h4><ul><li>about</li><li>work</li><li>insights</li><li>careers</li><li>contact</li></ul></div> -->
+        <!-- <div class="footer-col"><h4>resources</h4><ul><li onclick="window.location.href='https://google.com/';">blog</li><li>case studies</li><li>privacy policy</li><li>terms of use</li></ul></div> -->
+         <!-- <div class="footer-col"><h4>RESOURCES</h4><ul><li onclick="window.location.href='priv&pol.html';">privacy policy</li><li onclick="window.location.href='terms&use.html';">terms of use</li></ul></div> -->
+           <div class="footer-col"><h4>RESOURCES</h4><ul><li class="privpol" onclick="window.location.href='priv&pol.html';">privacy policy</li></ul></div>
+        <div class="footer-col"><h4>ISLAMABAD</h4><p>i10<br>Mon–Fri 10am–6pm<br>+92 300 6605128</p></div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 BitAge — all good rights reserved. Islamabad  |  help.bitage@gmail.com</p>
+        <p style="margin-top:1rem; font-size:0.85rem;">web dev · business solutions · design · social media handling · marketing, we are BitAge.</p>
+      </div>
+    </div>
+  </footer>
+  <script>
+    (function() {
+      const toggle = document.getElementById('menuToggle');
+      const nav = document.getElementById('navLinks');
+      if (toggle && nav) {
+        toggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          nav.classList.toggle('show');
+        });
+        nav.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            if (window.innerWidth <= 900) nav.classList.remove('show');
+          });
+        });
+      }
+      function openWhatsAppBooking() {
+        const phone = '03006605128';
+        const formattedPhone = '92' + phone.slice(1);
+        const message = encodeURIComponent("Hi BitAge! I'd like to book a free call to discuss my project.");
+        const url = `https://wa.me/${formattedPhone}?text=${message}`;
+        window.open(url, '_blank');
+      }
+      const whatsappBtns = document.querySelectorAll('#whatsappBookBtn, #whatsappHeroBtn, #whatsappContactBtn');
+      whatsappBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          openWhatsAppBooking();
+        });
+      });
+    })();
+  </script>
+  <script type="application/ld+json">
+  { "@context": "https://schema.org", "@type": "ProfessionalService", "name": "BitAge", "description": "Web development, business solutions, design, social media handling & marketing agency based in i10 Islamabad.", "address": { "@type": "PostalAddress", "addressLocality": "Islamabad", "addressCountry": "PK", "streetAddress": "i10 civic center" }, "email": "hello@bitage.agency", "url": "https://bitage.agency" }
+  </script>
+</body>
+</html>
